@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>CNC Accounting | Expert Accounting & Tax Solutions, Pretoria</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #0b2b4a;
+            --primary-light: #1f3f5f;
+            --accent: #000000;
+            --accent-soft: #2a2a2a;
+            --gray-50: #f9fafc;
+            --gray-100: #f2f4f8;
+            --gray-200: #e9ecf0;
+            --gray-600: #4b5565;
+            --gray-800: #1e293b;
+            --white: #ffffff;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 20, 30, 0.04);
+            --shadow-md: 0 16px 32px -12px rgba(0, 35, 55, 0.15);
+            --shadow-lg: 0 24px 48px -16px rgba(0, 25, 45, 0.2);
+            --border-radius-card: 20px;
+            --whatsapp-green: #25D366;
+        }
+
+        body {
+            font-family: "Inter", system-ui, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--gray-800);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        h2.center:after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--gray-600);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-alt {
+            background-color: var(--gray-50);
+        }
+
+        .section-soft {
+            background-color: var(--gray-100);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-soft);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: var(--primary);
+            color: rgba(255,255,255,0.85);
+            padding: 12px 0;
+            font-size: 0.8rem;
+        }
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .contact-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+        }
+        .social-links a {
+            color: white;
+            margin-left: 16px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Header */
+        header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+            transition: transform 0.3s ease;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        .logo img {
+            max-height: 85px;
+            width: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Navigation - mobile first */
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--gray-800);
+            transition: 0.3s;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(3px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.25s;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, rgba(11,43,74,0.92), rgba(11,43,74,0.85)), url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2065&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            color: white;
+            padding: 100px 0;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 2.2rem;
+        }
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .stat-item .stat-number {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* About */
+        .about-grid {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-direction: column;
+        }
+        .about-content, .about-image {
+            flex: 1;
+            width: 100%;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: white;
+            padding: 30px 24px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .service-icon {
+            background: var(--gray-100);
+            width: 55px;
+            height: 55px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .service-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .service-list li {
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .service-list li i {
+            color: var(--accent);
+            width: 18px;
+        }
+
+        /* Partners & Accreditations */
+        .partners-grid, .accreditation-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 40px 0 20px;
+        }
+        .partner-item img, .accreditation-item img {
+            max-height: 70px;
+            max-width: 140px;
+            object-fit: contain;
+            filter: grayscale(0.2);
+            transition: 0.3s;
+        }
+        .accreditation-item {
+            text-align: center;
+            min-width: 110px;
+        }
+        .accreditation-item img {
+            max-height: 60px;
+        }
+
+        /* Team */
+        .team-card-director {
+            max-width: 1000px;
+            margin: 40px auto 0;
+            background: white;
+            border-radius: 36px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        .team-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-details {
+            padding: 30px 28px 40px;
+        }
+        .team-name {
+            font-size: 1.8rem;
+        }
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .qualification-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .qualification-list li {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Testimonials - upgraded star ratings */
+        .testimonial-card {
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .stars {
+            color: #f5b042;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .stars i {
+            margin-right: 2px;
+        }
+        .testimonial-text {
+            font-style: normal;
+            margin-bottom: 16px;
+            color: var(--gray-800);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 8px;
+        }
+        .testimonial-title {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        /* Floating WhatsApp CTA */
+        .floating-wa {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--whatsapp-green);
+            color: white;
+            border-radius: 60px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            z-index: 1005;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .floating-wa i {
+            font-size: 1.6rem;
+        }
+        .floating-wa:hover {
+            background: #1da15f;
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 640px) {
+            .floating-wa {
+                padding: 10px 18px;
+                bottom: 16px;
+                right: 16px;
+                font-size: 0.85rem;
+            }
+            .floating-wa i {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .contact-info-block, .form-card {
+            padding: 32px 24px;
+            border-radius: 32px;
+            background: var(--gray-50);
+        }
+        .form-card {
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+        .contact-detail {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            align-items: flex-start;
+        }
+        .contact-detail i {
+            font-size: 1.4rem;
+            color: var(--accent);
+            width: 28px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--gray-200);
+            border-radius: 20px;
+            font-family: inherit;
+            background: var(--gray-50);
+        }
+        .map-container {
+            margin-top: 50px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 25px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-logo img {
+            max-height: 75px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: blur(4px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease, filter 0.5s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            h1 { font-size: 3.2rem; }
+            h2 { font-size: 2.4rem; }
+            .about-grid { flex-direction: row; }
+            .contact-grid { grid-template-columns: 1fr 1.2fr; }
+            .footer-grid { grid-template-columns: repeat(2,1fr); }
+            .hero h1 { font-size: 3rem; }
+            .team-image { height: 360px; }
+            .team-details { padding: 45px; }
+            .form-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (min-width: 1024px) {
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            nav ul { display: flex !important; position: static !important; width: auto !important; height: auto !important; background: transparent !important; padding: 0 !important; flex-direction: row !important; box-shadow: none !important; }
+            .hamburger { display: none !important; }
+            .menu-overlay { display: none; }
+        }
+        @media (max-width: 767px) {
+            .hamburger { display: block; }
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 100px 30px 40px;
+                box-shadow: -8px 0 30px rgba(0,0,0,0.2);
+                transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+                z-index: 1001;
+                gap: 28px;
+            }
+            nav ul.active { right: 0; }
+            nav a { font-size: 1.2rem; }
+            .hero { padding: 70px 0; }
+            .hero-stats { gap: 25px; }
+            .stat-item .stat-number { font-size: 1.8rem; }
+            .logo img { max-height: 75px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> 011 744 7500</span>
+                <span><i class="fas fa-phone-alt"></i> 073 744 7500</span>
+                <span><i class="fas fa-envelope"></i> nkunenc@yahoo.com</span>
+                <span><i class="fas fa-map-pin"></i> Clayville, Olifantsfontein</span>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/s29W0vKN/IMG-20260313-WA0030.jpg" alt="CNC Accounting logo">
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#accreditations">Accreditations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="reveal">Expert Accounting & <br>Tax Solutions</h1>
+            <p class="reveal delay-1">We provide comprehensive financial services to help individuals and businesses achieve their financial goals in Pretoria.</p>
+            <a href="#contact" class="btn btn-accent reveal delay-2">Free Consultation</a>
+            <div class="hero-stats">
+                <div class="stat-item reveal delay-3"><span class="stat-number">5+</span><br>years experience</div>
+                <div class="stat-item reveal delay-4"><span class="stat-number">100%</span><br>client satisfaction</div>
+                <div class="stat-item reveal delay-5"><span class="stat-number">500+</span><br>businesses served</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-grid">
+            <div class="about-content reveal">
+                <h2>Committed to Your Financial Success</h2>
+                <p><strong>CNC ACCOUNTANTS (PTY) LTD</strong> is a 100% black-owned and managed accounting firm in Pretoria established in 2015. We are registered members of SAIPA and SAIT.</p>
+                <p>Our firm provides a wide range of accounting, tax, and secretarial services to SMEs and individuals. We blend modern technology with deep expertise.</p>
+                <div style="display: flex; gap: 30px; margin: 30px 0;">
+                    <div><span style="font-size: 2rem; font-weight: 700; color: var(--accent);">5+</span><br>Years Experience</div>
+                    <div><span style="font-size: 2rem; font-weight: 700; color: var(--accent);">100%</span><br>Client Satisfaction</div>
+                </div>
+                <a href="#contact" class="btn btn-outline">Learn more</a>
+            </div>
+            <div class="about-image reveal">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" alt="CNC team meeting" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="services">
+        <div class="container">
+            <h2 class="center reveal">Our Services</h2>
+            <p class="center reveal delay-1" style="max-width: 800px; margin: 0 auto 40px;">Tailored solutions for growth & compliance</p>
+            <div class="services-grid">
+                <div class="service-card reveal delay-1"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><h3>Tax Planning</h3><ul class="service-list"><li><i class="fas fa-check"></i> Individual & business tax</li><li><i class="fas fa-check"></i> SARS representation</li><li><i class="fas fa-check"></i> Tax strategies</li></ul></div>
+                <div class="service-card reveal delay-2"><div class="service-icon"><i class="fas fa-calculator"></i></div><h3>Accounting</h3><ul class="service-list"><li><i class="fas fa-check"></i> Financial statements</li><li><i class="fas fa-check"></i> Reconciliations & ledgers</li><li><i class="fas fa-check"></i> Cash flow analysis</li></ul></div>
+                <div class="service-card reveal delay-3"><div class="service-icon"><i class="fas fa-handshake"></i></div><h3>Business Advisory</h3><ul class="service-list"><li><i class="fas fa-check"></i> Performance analysis</li><li><i class="fas fa-check"></i> Budgeting & forecasting</li><li><i class="fas fa-check"></i> Structuring</li></ul></div>
+                <div class="service-card reveal delay-1"><div class="service-icon"><i class="fas fa-users"></i></div><h3>Payroll</h3><ul class="service-list"><li><i class="fas fa-check"></i> Payroll processing</li><li><i class="fas fa-check"></i> EMP501 submissions</li><li><i class="fas fa-check"></i> Compliance</li></ul></div>
+                <div class="service-card reveal delay-2"><div class="service-icon"><i class="fas fa-book"></i></div><h3>Bookkeeping</h3><ul class="service-list"><li><i class="fas fa-check"></i> AP/AR management</li><li><i class="fas fa-check"></i> Monthly reports</li><li><i class="fas fa-check"></i> Bank reconciliation</li></ul></div>
+                <div class="service-card reveal delay-3"><div class="service-icon"><i class="fas fa-chart-pie"></i></div><h3>Financial Planning</h3><ul class="service-list"><li><i class="fas fa-check"></i> Retirement & estate</li><li><i class="fas fa-check"></i> Investment analysis</li><li><i class="fas fa-check"></i> Debt management</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-soft">
+        <div class="container">
+            <h2 class="center reveal">Our Trusted Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-item reveal"><img src="https://i.postimg.cc/KjypnKqv/IMG-20260313-WA0032.jpg" alt="JOSAY AUTO TEKNIK" loading="lazy"></div>
+                <div class="partner-item reveal"><img src="https://carpediemacademy.co.za/wp-content/uploads/thegem-logos/logo_327f232e1da273cc4e351ba9e3ad4d20_2x.png" alt="Carpé Diem Academy" loading="lazy"></div>
+                <div class="partner-item reveal"><img src="https://www.skvattorneys.co.za/wp-content/uploads/2026/01/Logo-Light.png" alt="SKV Attorneys" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="accreditations">
+        <div class="container">
+            <h2 class="center reveal">Accreditations</h2>
+            <div class="accreditation-grid">
+                <div class="accreditation-item reveal"><img src="https://www.saipa.co.za/wp-content/uploads/2021/10/saipa-professional-indemnity-insurance-300x300-1.jpg" alt="SAIPA" loading="lazy"><p>SAIPA</p></div>
+                <div class="accreditation-item reveal"><img src="https://iacsa.co.za/wp-content/uploads/2019/03/SARS-Logo.jpg" alt="SARS" loading="lazy"><p>SARS</p></div>
+                <div class="accreditation-item reveal"><img src="https://softbyte.co.za/wp-content/uploads/2017/04/SAIT.png" alt="SAIT" loading="lazy"><p>SAIT</p></div>
+                <div class="accreditation-item reveal"><img src="https://nationalgovernment.co.za/img/logos/thumb_independent_regulatory_board_for_auditors_%28irba%29.png" alt="IRBA" loading="lazy"><p>IRBA</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="team">
+        <div class="container">
+            <h2 class="center reveal">Meet Our Director</h2>
+            <div class="team-card-director reveal">
+                <div class="team-details">
+                    <h3 class="team-name">Cedric Nkuna</h3>
+                    <div class="team-role">Founder & Managing Director</div>
+                    <p>Professional Tax Practitioner with over 15 years of experience in financial management and tax consulting. Registered with SAIPA and SAIT, Mr. Nkuna specializes in corporate tax strategy and SME financial structuring.</p>
+                    <h4 style="margin: 20px 0 10px;">Qualifications</h4>
+                    <ul class="qualification-list">
+                        <li><i class="fas fa-graduation-cap"></i> BCom Honours Financial Accounting (UJ)</li>
+                        <li><i class="fas fa-graduation-cap"></i> BCom in Accounting (UJ)</li>
+                        <li><i class="fas fa-certificate"></i> SAIPA Accredited Professional Accountant</li>
+                        <li><i class="fas fa-certificate"></i> SAIT Registered Tax Practitioner</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgraded Testimonials with authentic star ratings & real-life stories -->
+    <section class="section-soft" id="testimonials">
+        <div class="container">
+            <h2 class="center reveal">Client Success Stories</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 28px; margin-top: 50px;">
+                <div class="testimonial-card reveal delay-1">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">“CNC Accounting reduced my tax liability by over 30% and streamlined chaotic bookkeeping. I finally have clarity on cash flow and can focus on expanding Taste of Africa Catering.”</p>
+                    <div class="testimonial-author">Sarah Ndlovu</div>
+                    <div class="testimonial-title">Owner, Taste of Africa Catering</div>
+                </div>
+                <div class="testimonial-card reveal delay-2">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">“Their financial restructuring advice saved our firm over R150k in unnecessary tax expenses. CNC’s team is proactive and genuinely invested in our growth.”</p>
+                    <div class="testimonial-author">Michael Mabunda</div>
+                    <div class="testimonial-title">Director, Mabunda & Associates</div>
+                </div>
+                <div class="testimonial-card reveal delay-3">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">“As a non-profit, compliance is critical. CNC ensures we meet all SARS deadlines while delivering insightful management reports that our board loves.”</p>
+                    <div class="testimonial-author">Lisa van Rooyen</div>
+                    <div class="testimonial-title">Director, Bright Future Foundation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="center reveal">Contact Us</h2>
+            <p class="center reveal delay-1">Get in touch for a free consultation</p>
+            <div class="contact-grid">
+                <div class="contact-info-block reveal delay-2">
+                    <h3>Information</h3>
+                    <div class="contact-detail"><i class="fas fa-map-pin"></i><div><strong>Visit Us</strong><br>8104 Mohi Crescent, Clayville Ext 71<br>Olifantsfontein, 1666</div></div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><strong>Call Us</strong><br>011 744 7500<br>073 744 7500</div></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>nkunenc@yahoo.com</div></div>
+                    <div class="contact-detail"><i class="fas fa-clock"></i><div><strong>Hours</strong><br>Mon-Fri: 8am-4pm<br>Sat: 8am-1pm</div></div>
+                </div>
+                <div class="form-card reveal delay-3">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group"><label>Full name *</label><input type="text" id="name" required></div>
+                            <div class="form-group"><label>Company</label><input type="text" id="company"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Email *</label><input type="email" id="email" required></div>
+                            <div class="form-group"><label>Phone</label><input type="tel" id="phone"></div>
+                        </div>
+                        <div class="form-group"><label>Service interest</label><select id="service"><option>Monthly accounting</option><option>Tax planning</option><option>Business advisory</option><option>Payroll</option></select></div>
+                        <div class="form-group"><label>Message *</label><textarea id="message" rows="4" required></textarea></div>
+                        <button type="submit" class="btn btn-accent" style="width:100%;">Send enquiry via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container reveal delay-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3586.345678901234!2d28.219456!3d-25.987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e957f5a3b2b2b2b%3A0x2c3c3c3c3c3c3c3c!2s8104%20Mohi%20Crescent%2C%20Clayville%2C%20Olifantsfontein%2C%201666!5e0!3m2!1sen!2sza!4v1620000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--primary); padding: 60px 0;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: white;" class="reveal">Ready to strengthen your future?</h2>
+            <p style="color: rgba(255,255,255,0.85); margin: 20px auto;" class="reveal delay-1">Join 500+ business owners who trust CNC for clarity and growth.</p>
+            <a href="#contact" class="btn btn-accent reveal delay-2" style="margin: 0 10px 10px 0;">Free consultation</a>
+            <a href="tel:0117447500" class="btn btn-outline reveal delay-2" style="border-color: white; color: white;">Call now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="footer-logo"><img src="https://i.postimg.cc/s29W0vKN/IMG-20260313-WA0030.jpg" alt="CNC logo" loading="lazy"></div><p>Modern accounting, traditional values. Based in Clayville, Olifantsfontein, serving South Africa.</p></div>
+                <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li><li><a href="#team"><i class="fas fa-chevron-right"></i> Team</a></li></ul></div>
+                <div class="footer-col"><h4>Services</h4><ul class="footer-links"><li><a href="#">Accounting</a></li><li><a href="#">Tax planning</a></li><li><a href="#">Advisory</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><div><i class="fas fa-map-pin"></i> 8104 Mohi Crescent, Clayville</div><div><i class="fas fa-phone-alt"></i> 011 744 7500 / 073 744 7500</div><div><i class="fas fa-envelope"></i> nkunenc@yahoo.com</div><div style="margin-top: 15px;"><i class="fab fa-facebook"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-instagram"></i></div></div>
+            </div>
+            <div class="copyright">© 2026 CNC Accountants (PTY) LTD. All rights reserved. Olifantsfontein - South Africa.</div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp CTA (mobile + desktop boost) -->
+    <a href="https://wa.me/27737447500?text=Hello%20CNC%20Accounting%2C%20I%27d%20like%20to%20inquire%20about%20your%20services." class="floating-wa" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i> <span>WhatsApp Us</span>
+    </a>
+
+    <script>
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const overlay = document.getElementById('menuOverlay');
+        function closeMenu() { navMenu.classList.remove('active'); overlay.classList.remove('active'); }
+        function toggleMenu() { navMenu.classList.toggle('active'); overlay.classList.toggle('active'); }
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('#nav-menu a').forEach(link => link.addEventListener('click', closeMenu));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const id = this.getAttribute('href');
+                if(id === '#') return;
+                const target = document.querySelector(id);
+                if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+
+        // Header hide on scroll
+        const header = document.getElementById('main-header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const cur = window.pageYOffset;
+            if (cur <= 0) header.classList.remove('header-hidden');
+            else if (cur > lastScroll && cur > 80) header.classList.add('header-hidden');
+            else if (cur < lastScroll) header.classList.remove('header-hidden');
+            lastScroll = cur;
+        });
+
+        // Reveal animations
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.12, rootMargin: "0px 0px -20px 0px" });
+        revealEls.forEach(el => observer.observe(el));
+
+        // WhatsApp form (primary number 0737447500)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if (!name || !email || !message) return alert('Please fill in all required fields.');
+            const company = document.getElementById('company').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const whatsappMsg = `Hello CNC Accounting, consultation request.%0A%0AName: ${name}%0ACompany: ${company || '-'}%0AEmail: ${email}%0APhone: ${phone || '-'}%0AService: ${service}%0AMessage: ${message}`;
+            window.open(`https://wa.me/27737447500?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
